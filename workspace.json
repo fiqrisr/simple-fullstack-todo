@@ -3,6 +3,9 @@
   "projects": {
     "api": "apps/api",
     "api-prisma": "libs/api/prisma",
-    "api-todo": "libs/api/todo"
+    "api-todo": "libs/api/todo",
+    "ui": "libs/ui",
+    "web": "apps/web",
+    "web-e2e": "apps/web-e2e"
   }
 }

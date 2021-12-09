@@ -15,6 +15,10 @@
               {
                 "sourceTag": "scope:api",
                 "onlyDependOnLibsWithTags": ["scope:api"]
+              },
+              {
+                "sourceTag": "scope:web",
+                "onlyDependOnLibsWithTags": ["scope:web"]
               }
             ]
           }
