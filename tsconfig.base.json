@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@simple-fullstack-todo/api/prisma": ["libs/api/prisma/src/index.ts"],
+      "@simple-fullstack-todo/api/todo": ["libs/api/todo/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
