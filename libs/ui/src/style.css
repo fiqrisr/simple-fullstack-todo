@@ -1,0 +1,12 @@
+@import url('assets/fonts/fontello.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:checked + div {
+  @apply border-purple-500;
+}
+input:checked + div svg {
+  @apply block;
+}
