@@ -4,7 +4,7 @@ import TodoList from './TodoList';
 
 describe('TodoList', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<TodoList />);
+    const { baseElement } = render(<TodoList todos={[]} />);
     expect(baseElement).toBeTruthy();
   });
 });
