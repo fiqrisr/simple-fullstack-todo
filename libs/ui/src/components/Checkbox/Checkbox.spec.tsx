@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import Todolist from './Todolist';
+import Checkbox from './Checkbox';
 
-describe('Todolist', () => {
+describe('Checkbox', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Todolist />);
+    const { baseElement } = render(<Checkbox />);
     expect(baseElement).toBeTruthy();
   });
 });

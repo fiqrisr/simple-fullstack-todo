@@ -1,27 +1,19 @@
-import React, { ChangeEventHandler, useRef } from 'react';
-import { TodoInterface } from '../../models/todo';
+import React from 'react';
 
 /* eslint-disable-next-line */
-export interface TodoProps extends TodoInterface {
-  onChecked: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onTodoChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+export interface CheckboxProps {}
 
-export const Todo: React.FC<TodoProps> = ({
-  text,
-  done,
-  onChecked,
-  onTodoChange
+export const Checkbox: React.FC<CheckboxProps & Partial<HTMLInputElement>> = ({
+  checked,
+  onchange,
 }) => {
-  const todoInput = useRef<HTMLInputElement>(null);
-
   return (
-    <div className="flex py-2 px-8 items-center">
+    <>
       <input
         type="checkbox"
         className="opacity-0 absolute h-5 w-5"
-        checked={done}
-        onChange={onChecked}
+        checked={checked}
+        onChange={(e) => onchange}
       />
       <div className="bg-white border-2 rounded-md border-purple-300 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-purple-500">
         <svg
@@ -37,15 +29,8 @@ export const Todo: React.FC<TodoProps> = ({
           </g>
         </svg>
       </div>
-      <input
-        ref={todoInput}
-        onChange={(e) => onTodoChange(e)}
-        className="flex-1 px-3 py-1 mx-2 w-full text-purple-500 outline-purple-300 rounded-lg"
-        value={text}
-      />
-      <i className="icon-trash-empty text-purple-400 hover:text-purple-600 hover:cursor-pointer"></i>
-    </div>
+    </>
   );
 };
 
-export default Todo;
+export default Checkbox;

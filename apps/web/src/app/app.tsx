@@ -4,16 +4,17 @@ import {
   AppBar,
   AppLayout,
   Icon,
-  TodoList,
   Button,
   TodoInterface,
 } from '@simple-fullstack-todo/ui';
 
+import TodoList from './components/TodoList/TodoList';
+
 const App = () => {
-  const [todos, setTodos] = useState<TodoInterface[]>([]);
+  const [todos, setTodos] = useState<Required<TodoInterface>[]>([]);
 
   const getTodo = useCallback(async () => {
-    const { data } = await axios.get<TodoInterface[]>(
+    const { data } = await axios.get<Required<TodoInterface>[]>(
       'http://localhost:3333/api/todo'
     );
 
@@ -39,11 +40,7 @@ const App = () => {
   return (
     <AppLayout>
       <AppBar title="Fullstack Todo" />
-      <TodoList
-        todos={todos}
-        onChecked={(e) => checkTodo}
-        onTodoChange={(e) => changeTodo}
-      />
+      <TodoList todos={todos} />
       <Button>
         <Icon icon="plus" /> New Task
       </Button>
