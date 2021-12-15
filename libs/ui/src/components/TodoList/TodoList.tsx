@@ -1,17 +1,27 @@
 import React from 'react';
 import { TodoInterface } from '../../models/todo';
-import Todo from '../Todo/Todo';
+import Todo, { TodoProps } from '../Todo/Todo';
 
 /* eslint-disable-next-line */
-export interface TodolistProps {
+export interface TodolistProps extends TodoProps {
   todos: TodoInterface[];
 }
 
-export const TodoList: React.FC<TodolistProps> = ({ todos }) => {
+export const TodoList: React.FC<TodolistProps> = ({
+  todos,
+  onChecked,
+  onTodoChange
+}) => {
   return (
-    <div className="w-full shadow-lg my-3">
+    <div className="w-full shadow-lg mt-3 mb-4">
       {todos.map((todo) => (
-        <Todo text={todo.text} done={todo.done} />
+        <Todo
+          key={todo.id}
+          text={todo.text}
+          done={todo.done}
+          onChecked={onChecked}
+          onTodoChange={onTodoChange}
+        />
       ))}
     </div>
   );
