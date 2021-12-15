@@ -15,6 +15,17 @@ export const useTodo = (baseUrl: string) => {
     getTodo();
   }, [getTodo]);
 
+  const addTodo = useCallback(
+    async (text: string) => {
+      await axios.post(`${baseUrl}`, {
+        text,
+      });
+
+      getTodo();
+    },
+    [baseUrl, getTodo]
+  );
+
   const setTodo = useCallback(
     async (id: string, done: boolean) => {
       await axios.patch(`${baseUrl}/${id}/set`, {
@@ -37,5 +48,14 @@ export const useTodo = (baseUrl: string) => {
     [baseUrl, getTodo]
   );
 
-  return { todos, setTodo, changeTodo };
+  const deleteTodo = useCallback(
+    async (id: string) => {
+      await axios.delete(`${baseUrl}/${id}`);
+
+      getTodo();
+    },
+    [baseUrl, getTodo]
+  );
+
+  return { todos, addTodo, setTodo, changeTodo, deleteTodo };
 };

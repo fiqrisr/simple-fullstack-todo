@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { Checkbox } from '@simple-fullstack-todo/ui';
 
@@ -9,6 +9,7 @@ export interface TodoProps {
   done: boolean;
   setTodo: (id: string, done: boolean) => void | Promise<void>;
   changeTodo: (id: string, text: string) => void | Promise<void>;
+  deleteTodo: (id: string) => void | Promise<void>;
 }
 
 export const Todo: React.FC<TodoProps> = ({
@@ -17,6 +18,7 @@ export const Todo: React.FC<TodoProps> = ({
   done,
   setTodo,
   changeTodo,
+  deleteTodo,
 }) => {
   const [inputText, setInputText] = useState(text);
   const debouncedText = useDebouncedCallback(
@@ -35,7 +37,10 @@ export const Todo: React.FC<TodoProps> = ({
           debouncedText(e.target.value);
         }}
       />
-      <i className="icon-trash-empty text-purple-400 hover:text-purple-600 hover:cursor-pointer"></i>
+      <i
+        className="icon-trash-empty text-purple-400 hover:text-purple-600 hover:cursor-pointer"
+        onClick={() => deleteTodo(id)}
+      ></i>
     </div>
   );
 };

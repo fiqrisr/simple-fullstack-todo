@@ -8,12 +8,14 @@ export interface TodoListProps {
   todos: Required<TodoInterface>[];
   setTodo: (id: string, done: boolean) => void | Promise<void>;
   changeTodo: (id: string, text: string) => void | Promise<void>;
+  deleteTodo: (id: string) => void | Promise<void>;
 }
 
 export const TodoList: React.FC<TodoListProps> = ({
   todos,
   setTodo,
   changeTodo,
+  deleteTodo,
 }) => {
   return (
     <div className="w-full shadow-lg mt-3 mb-4">
@@ -25,6 +27,7 @@ export const TodoList: React.FC<TodoListProps> = ({
           done={todo.done}
           setTodo={setTodo}
           changeTodo={changeTodo}
+          deleteTodo={deleteTodo}
         />
       ))}
     </div>

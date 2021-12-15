@@ -4,15 +4,20 @@ import TodoList from './components/TodoList/TodoList';
 import { useTodo } from './hooks/useTodo';
 
 const App = () => {
-  const { todos, setTodo, changeTodo } = useTodo(
+  const { todos, addTodo, setTodo, changeTodo, deleteTodo } = useTodo(
     'http://localhost:3333/api/todo'
   );
 
   return (
     <AppLayout>
       <AppBar title="Fullstack Todo" />
-      <TodoList todos={todos} setTodo={setTodo} changeTodo={changeTodo} />
-      <Button>
+      <TodoList
+        todos={todos}
+        setTodo={setTodo}
+        changeTodo={changeTodo}
+        deleteTodo={deleteTodo}
+      />
+      <Button onClick={() => addTodo('')}>
         <Icon icon="plus" /> New Task
       </Button>
     </AppLayout>
